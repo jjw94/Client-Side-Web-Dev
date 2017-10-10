@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>XML Demo</title>
+<script>
+//*********************************************************************
+//READ ALL THE COMMENTS IN THIS CODE
+//*********************************************************************
+//Open your books to page 491 (Ajax) and follow along this code with the reading.
+//There are 4 steps to set up an http request.
+//Step 1: Instantiate the Object --- we do this in 'getHTTPObject()'
+//Step 2: Call the open() method on the request object
+//Step 3: Set the request headers
+//Step 4: Send the request to the server
+
+//*********************************************************************
+//Global variables
+
+//Name of the xml file - put it into the same folder as your .html file
+
+var xmlFile = prompt('What is the name of your xml file?');
+
+//We create the HTTP Object in the function 'getHTTPObject' below
+var myHTTPrequest = getHTTPObject();
+
+//This will hold the XML document as an object
+var xmlDoc;
+
+//*********************************************************************
+//Create and get an http object (ajax)
+function getHTTPObject(){
+	var xmlhttp;
+	//Check to see if you can use native XMLHttpRequest object or ActiveX
+	if(window.XMLHttpRequest){
+  		xmlhttp = new XMLHttpRequest();
+  	}
+	//...for IE/Windows ActiveX version
+	else if(window.ActiveXObject){
+  		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  	} //You're using a browser that doesn't allow http object
+	else{ //Return false to the variable on line 10
+ 		return false;
+  	}
+  	//Return the object to the variable on line 10
+	return xmlhttp;
+}
+//********************************************************************
+//Create a way to look into the object
+//In this program, there is a button that calls this function
+//See the button named 'pets' in the <body> section
+function handleHttpResponse(){
+	//First check if the http request is there
+	if(myHTTPrequest){
+    	//Good, myHTTPrequest has something (not false)
+		myHTTPrequest.open("GET", xmlFile, true);
+		myHTTPrequest.setRequestHeader("content-type", "text/xml");
+    	myHTTPrequest.send(null);
+	}
+	//I had to add this alert to "slow" things down
+	alert("Here are your Pet options.");
+  	//First, is my 'object' complete? (done getting info from server?)
+  	if(myHTTPrequest.readyState == 4){
+		//If I got something from the server... is it good?
+    	if(myHTTPrequest.status == 200){
+      		//Use the XML DOM to unpack the XML data
+      		xmlDoc = myHTTPrequest.responseXML;
+      		
+			//Now I'm going to build a list of data from the XML document
+			var contents = '';
+			//Concatenate all of the 'text' attribute values in the select nodes in the xml file
+			//NOTE: this is where your code could be different -- it depends on what your XML file holds mine has a 'text' attribute
+	  		for(var i = 0; i < xmlDoc.getElementsByTagName('select').length; i++){
+           		var tempStorage = xmlDoc.getElementsByTagName('select')[i].getAttribute("text");
+				contents += tempStorage + "<br/>";
+      		}
+			//Put the concatenated string into the 'container' element in your html document
+      		document.getElementById('container').innerHTML += contents;
+	 	}
+  	}
+}
+
+function getoptions(){
+	opt = prompt("Which select do you want to look at?");
+	for(var i = 0; i < xmlDoc.getElementsByTagName('select').length; i++){
+		if(xmlDoc.getElementsByTagName('select')[i].text == opt){
+			alert('found xml select for ' + opt);
+			var x = xmlDoc.getElementsByTagName('select')[i];
+			x1 = x.firstChild;
+			while(x1.nodeType != 1){
+				x1 = x1.nextSibling;
+			}
+			alert(x1.getAttribute("text"));
+			while(x1.nextSibling != "undefined"){
+				x1 = x1.nextSibling;
+				if(x1.nodeType == 1){
+					alert(x1.getAttribute("text"));
+				}
+			}
+		}
+	}
+}
+</script>
+</head>
+<body>
+<input type='button' onclick="handleHttpResponse();" value="pets" />
+<input type='button' onclick="getoptions();" value="options" />
+<div id="container"></div>
+</body>
+</html>

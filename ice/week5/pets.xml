@@ -1,0 +1,76 @@
+<?xml version="1.0" ?>
+<select text="Pet Type">
+	<option text="mutt" value="d">
+		<select text="size">
+			<option text="over 50 pounds" value="l">
+				<select text="temperment">
+					<option text="docile" value="1l" result="Marmaduke"></option>
+					<option text="agressive" value="2l" result="Bad Pete"></option>
+					<option text="curious" value="3l" result="Scooby Doo"></option>
+					<option text="lovable" value="4l" result="Beethoven"></option>
+				</select>
+			</option>
+			<option text="between 20 and 50 pounds" value="m">
+				<select text="energy level">
+					<option text="high strung" value="1m" result="Astro"></option>
+					<option text="likes walks" value="2m" result="Tramp"></option>
+					<option text="in charge" value="3m" result="Underdog"></option>
+				</select>
+			</option>
+			<option text="under 20 pounds" value="s">
+				<select text="intelligence">
+					<option text="smarter than he looks" value="1s" result="Max"></option>
+					<option text="scientist" value="2s" result="Mr. Peabody"></option>
+					<option text="philosophical" value="3s" result="Dogbert"></option>
+					<option text="clueless" value="4s" result="Santa's Little Helper"></option>
+					<option text="unintelligible" value="5s" result="Sparky"></option>
+				</select>
+			</option>
+		</select>
+	</option>
+	<option text="cat" value="c">
+		<select text="Fur Type">
+			<option text="long hair" value="h">
+				<select text="friendliness">
+					<option text="lovable" value="f1" result="Marie (aristocat)"></option>
+					<option text="snarky" value="f2" result="Lucifer."></option>
+					<option text="fun" value="f3" result="Chesire Cat"></option>
+				</select>
+			</option>
+			<option text="Weird Colors" value="w">
+				<select text="select a color of fur">
+					<option text="gray" value="w1" result="Tom (from Tom and Jerry)"></option>
+					<option text="black and white" value="w2" result="Felix the Cat"></option>
+					<option text="pink" value="w3" result="Pink Panther"></option>
+					<option text="orange" value="w4" result="Garfield"></option>
+				</select>
+			</option>
+			<option text="Vocals" value="v">
+				<select text="select a vocal attribute">
+					<option text="very talkative" value="v1" result="Top Cat"></option>
+					<option text="Spanish accent" value="v2" result="Puss in Boots"></option>
+					<option text="no voice" value="v3" result="Tom"></option>
+				</select>
+			</option>
+		</select>
+	</option>
+	<option text="Bird" value="b">
+		<select text="personality">
+			<option text="select a friendly bird" value="s">
+				<select text="other attributes">
+					<option text="Very Large and Yellow" value="f1" result="Big Bird"></option>
+					<option text="Fast and smart" value="f2" result="Roadrunner"></option>
+					<option text="Sweet and innocent" value="f3" result="Tweetie Bird"></option>
+					<option text="Smart" value="f4" result="Owl (from Winnie the Poo)"></option>
+				</select>
+			</option>
+			<option text="select a not so friendly bird" value="a">
+				<select text="other attributes">
+					<option text="impolite and selfish" value="a1" result="Donald Duck"></option>
+					<option text="a bit of a screwball" value="a2" result="Daffy Duck"></option>
+					<option text="stingy" value="a3" result="Scrooge McDuck"></option>
+				</select>
+			</option>
+		</select>
+	</option>
+</select>

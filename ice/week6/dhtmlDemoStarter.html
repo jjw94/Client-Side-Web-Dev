@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>DHTML FUN</title>
+<script type="text/javascript">
+	function changeAll(whichElem, ruleToChange){
+		document.getElementById('funDHTML').style[ruleToChange] = whichElem.value;
+	}
+	
+	function slide(id){
+		if(parseInt(document.getElementById(id).style.left) < 400){
+			document.getElementById(id).style.left = parseInt(document.getElementById(id).style.left) + 1 + "px";
+			setTimeout(function(){slide(id);}, 10);
+		}
+	}
+</script>
+
+</head>
+<body>
+<h2>Dynamic HTML -- changing CSS dynamically</h2>
+<div onmouseover="this.style.backgroundColor='yellow'; this.style.cursor='pointer' "onmouseout="this.style.backgroundColor='pink'; "style="border:2px solid grey;width:10em;margin-bottom:30px;"> mouseover test</div>
+<hr />
+<form action="" method="">
+	<div id="funDHTML" style="border:2px solid red;width:10em;position:relative;left:200px;">Some text to control</div>
+	<p>
+		Put in a color name (or hex):
+		<input type="text" size="30" onchange="changeAll(this, 'color')"/><br/>
+		Put in a font size (like 12pt):
+		<input type="text" size="30" onchange="changeAll(this,'fontSize')"/><br/>
+		Put in a font family:
+		<input type="text" size="30" onchange="changeAll(this,'fontFamily')"/><br/>
+		Put in a new left (like 100px):
+		<input type="text" size="30" onchange="changeAll(this,'left')"/><br/>
+		Put in a new top (like 200px):
+		<input type="text" size="30" onchange="changeAll(this,'top')"/><br/>
+		Put in a background color:
+		<input type="text" size="30" onchange="changeAll(this,'backgroundColor')"/><br/>
+		Put in a border style (dashed,dotted, double):
+		<input type="text" size="30" onchange="changeAll(this,'borderStyle')"/>
+	</p>
+</form>
+<hr />
+<button onclick="slide('move')">Click me to slide</button>
+<div id="move" style="border:2px dashed orange; width:10em; position:relative; left:0px"> moving target...
+</div>
+</body>
+</html>

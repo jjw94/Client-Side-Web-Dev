@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>ISTE340 Week 2 - MADLIBs and the DOM</title>
+
+<!--  Part 7 -- new starter file
+ 			create buttons, and other form elements
+-->
+<style>
+form{border-style:dotted;
+		border-color:#000;
+		width:300px;
+}
+
+</style>
+
+<script>
+//Global variables
+//btnCount is used to create unique button name attributes
+//var txtboxCount = 0;
+
+function createForm(){
+//Create a text field object in the form
+var txtboxCount = prompt("Enter number of text boxes ", 0);
+var frm = document.getElementById("myFormID");
+	for(var i = 0; i < txtboxCount; i++){
+		var txtbox = document.createElement("INPUT");
+		alert(txtboxCount);
+		txtbox.type = "text";
+		var nm = "txtbox " + txtboxCount;
+		txtbox.name = nm;
+		txtbox.value = nm;
+		alert(txtbox);
+		frm.appendChild(txtbox);
+		//Append a line break
+		frm.appendChild(document.createElement("br"));
+	}
+}
+
+function removeForm(){
+//Removes all the child nodes from the form
+var myNode = document.getElementById("myFormID");
+var numChildNodes = myNode.childNodes.length;
+alert(numChildNodes);
+	while(myNode.firstChild){
+		myNode.removeChild(myNode.firstChild);
+		firstChild = myNode.firstChild;
+	}
+}
+
+</script>
+</head>
+<body>
+<h1>Mad Libs</h1>
+<div id="createFrm'">
+	<input type="button" onclick="createForm();" value="create a form" />
+</div>
+
+<div id="removeFrm'">
+	<input type="button" onclick="removeForm();" value="remove a form" />
+</div>
+
+<form name='myForm' id='myFormID'>
+
+</form>
+
+
+</body>
+</html>

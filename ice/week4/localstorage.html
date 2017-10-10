@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<title>Local Storage Demo</title>
+
+<script>
+//////////////////////////////////////////////////////////////////////
+//Check browser support for local storage
+function fnStorage(){
+	if(typeof(Storage) !== "undefined"){
+  		if (localStorage.wordCount !== "undefined"){
+    		localStorage.setItem('wordCount', Number(localStorage.getItem('wordCount')) + 1);
+    	}
+  		else{
+    		localStorage.setItem('wordCount', 1);
+    	}
+		
+		//Store the values with a key
+		var i = localStorage.getItem('wordCount');
+		var k = 'word' + i
+		var v = document.getElementById('word').value;
+		localStorage.setItem(k, v);
+		document.getElementById('word').value = "";
+		document.getElementById('word').focus();
+	}
+	else{
+  		document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+	}
+ }
+ 
+ function fnShowAll(){
+	var k;
+	if(localStorage.wordCount){
+		n = Number(localStorage.getItem('wordCount'));
+		document.getElementById("result").innerHTML = "There are " + n + " Items in storage.";
+		document.getElementById("result").innerHTML += "<br>";
+		for(var i = 1; i <= n; i++){
+			k = 'word' + i;
+			document.getElementById("result").innerHTML += localStorage.getItem(k);
+			document.getElementById("result").innerHTML += "<br>";
+		}
+	}
+	else alert("no words stored");
+ }
+ 
+ /////////////////////////////////////////////////////////////////////
+ function fnRemoveAll(){
+	var i = localStorage.getItem('wordCount');
+	for(var j = 0; j < i; j++){
+		localStorage.removeItem('word' + j);
+		localStorage.removeItem('wordCount');
+		document.getElementById("result").innerHTML = "";
+	}
+ }
+
+</script>
+<body>
+	<div id='myForm'>
+		<form id="wordform" >
+			<input id="word" name="word" type="text" value="" />
+			<input id="add" type="button" onClick="fnStorage();" value="Add" />
+			<input id="showWord" type="button" onClick="fnShowAll();" value = "Show all words" />
+			<input id="removeWord" type="button" onClick="fnRemoveAll();" value = "Remove all words" />
+			<script>
+				document.getElementById('word').focus(); 
+			</script>
+		</form>
+	</div>
+	<div id="result">
+	</div>
+</body>
+</html>

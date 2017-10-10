@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>week 1 day 2</title>
+<script>
+/// Objects ///
+
+var bookObj = {
+	genre:['textbook', 'adventure', 'teens'],
+	pages:[789, 190, 75],
+	printData : function(x){
+		alert(x)
+	}
+}
+
+var answer = '';
+while(answer != 'genre' && answer != 'pages'){
+	answer = prompt("Please input genre or pages");
+	answer = answer.toLowerCase()
+}
+
+var output = bookObj[answer.toLowerCase()];
+// the above is going to be either bookObj.genre or bookObj.pages
+// bookObj.genre is the same as bookObj['genre']
+
+bookObj.printData(output.join('\n'));
+
+</script>
+</head>
+<body>
+
+
+
+</body>
+</html>

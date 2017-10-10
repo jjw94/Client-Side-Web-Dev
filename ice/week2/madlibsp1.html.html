@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>ISTE340 Week 2 - MADLIBs and the DOM</title>
+<style>
+ form { padding-left: 50px;}
+</style>
+
+<script>
+//Part 1 of this lesson on the Document Object Model
+//Getting elements by their ID 
+//Getting elements by their array Index
+
+function libIt(){
+  //Create the Mad Lib
+  var person = document.getElementById("person").value;
+  var adjective = document.getElementById("adjective").value;
+  var noun = document.getElementById("noun").value;
+  str = person + " married a " + adjective + " " + noun + "... Ha ha ha!";
+  
+  //Create a text node in the story div
+  
+  var theDiv = document.getElementById("story");
+  var content = document.createTextNode(str);
+  var para=document.createElement("P");
+  para.appendChild(content);
+  theDiv.appendChild(para);
+  
+  
+  //Add a text node inside the body
+  document.body.appendChild(document.createTextNode(str));
+  
+  //Now... add a line break
+  document.body.appendChild(document.createElement("br"));
+  
+  //An alert to see if we've got it right.
+  alert(str);
+ 
+ //Add the str value to the text element (5th on the form)
+ document.forms[0].elements[4].value = str;
+}
+ 
+function startOver(){
+ //Remove the nodes form the story div
+ var myNode = document.getElementById("story");
+ while(myNode.firstChild){
+  myNode.removeChild(myNode.firstChild);
+ }
+}
+</script>
+
+</head>
+<body>
+<h1>Mad Libs</h1>
+
+<form name='libForm' id='madlib'>
+  Noun: <input type="text" id="noun" /><br /><br />
+  Adjective: <input type="text" id="adjective" /><br /><br />
+  Someone's Name: <input type="text" id="person" /><br /><br />
+  <br />
+
+  <input type="button" id="lib-button" value="Lib-It" onclick="libIt();" />
+
+  <div id='yourlib'>
+   Your madlib is: <input type="text" size ="100" name="madlib" value="" />
+  </div>
+
+
+  <div id="clearall">
+   <input type="reset" value="clear" />
+  </div>
+</form>
+
+<div>
+ <input type="button" id="removestuff" value="removejunk" onclick="startOver();" />
+</div>
+
+<div id="story">  
+
+</div>
+
+</body>
+</html>

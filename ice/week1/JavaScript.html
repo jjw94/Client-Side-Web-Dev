@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>week 1 day 2</title>
+<script>
+// First Scope Test
+var myData1 = 5;
+	alert('myData1 outside any functions = ' + myData1);
+function scopeTest1(){
+	var myData1 = 10;
+	alert("at beginning of the function = " + myData1);
+}
+
+function scopeTest2(){
+	alert("at the beginning of second function = " + myData1);
+}
+
+</script>
+</head>
+<body onload = "scopeTest1(); scopeTest2();">
+
+
+
+</body>
+</html>
