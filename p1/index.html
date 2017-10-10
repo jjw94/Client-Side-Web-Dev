@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>New Egg v2.0</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <script type="text/javascript" src="js/cookies.js"></script>
+    <script type="text/javascript" src="js/data.js"></script><!--my data-->
+    <script type="text/javascript" src="js/form.js"></script><!--maily form related-->
+    <script type="text/javascript" src="js/script.js"></script><!--main javascript stuff-->
+    <script type="text/javascript">
+        //If Mac IE
+        if(document.all && window.print){
+            window.location('http://www.mozilla.org/en-US/firefox/new/');
+        }
+    </script>
+</head>
+<body onload="createNext()">
+    <div id="header">
+	<h1>Order Your New Computer Parts</h1>
+    </div>
+    <div id="error"></div>
+    <div id="leftcolumn"></div>
+    <div id="rightcolumn" style="top:-500px;"></div>
+</body>
+</html>
